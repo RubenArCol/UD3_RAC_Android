@@ -5,23 +5,4 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.example.ud3_rac.listFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
-        android:name="com.example.ud3_rac.counterFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView3"
-        android:name="com.example.ud3_rac.detailFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity"/>
