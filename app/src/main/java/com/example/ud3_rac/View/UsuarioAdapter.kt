@@ -15,7 +15,7 @@ import com.example.ud3_rac.databinding.LineausuarioBinding
  * TODO: Replace the implementation with code for your data type.
  */
 class UsuarioAdapter(padre: Fragment, private val vm: ListaViewModel) : RecyclerView.Adapter<UsuarioAdapter.ViewHolder>() {
-    lateinit var values:List<Usuario>
+    lateinit var values:MutableList<Usuario>
     init{
         vm.lista.observe(padre){
             values=it

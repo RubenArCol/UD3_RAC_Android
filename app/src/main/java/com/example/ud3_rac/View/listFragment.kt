@@ -39,6 +39,7 @@ class listFragment : Fragment() {
                 }
                 adapter = UsuarioAdapter(this@listFragment, vm)
             }
+            vm.arrancaTimer()
         }
         return view
     }
