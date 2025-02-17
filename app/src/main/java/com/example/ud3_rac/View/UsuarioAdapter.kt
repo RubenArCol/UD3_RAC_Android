@@ -1,12 +1,11 @@
-package com.example.ud3_rac
+package com.example.ud3_rac.View
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.ud3_rac.Model.Usuario
 
-import com.example.ud3_rac.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.ud3_rac.databinding.LineausuarioBinding
 
 /**
@@ -14,7 +13,7 @@ import com.example.ud3_rac.databinding.LineausuarioBinding
  * TODO: Replace the implementation with code for your data type.
  */
 class UsuarioAdapter(
-    private val values: List<PlaceholderItem>
+    private val values: Usuario.Companion
 ) : RecyclerView.Adapter<UsuarioAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

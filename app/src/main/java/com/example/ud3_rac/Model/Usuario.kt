@@ -1,4 +1,4 @@
-package com.example.ud3_rac
+package com.example.ud3_rac.Model
 
 import java.time.LocalTime
 import kotlin.random.Random

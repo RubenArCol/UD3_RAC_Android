@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.ud3_rac"
-        minSdk = 26
+        minSdk = 25
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"

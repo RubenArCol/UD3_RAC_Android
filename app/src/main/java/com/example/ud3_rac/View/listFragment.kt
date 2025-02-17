@@ -1,4 +1,4 @@
-package com.example.ud3_rac
+package com.example.ud3_rac.View
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,13 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ud3_rac.placeholder.PlaceholderContent
+import androidx.fragment.app.viewModels
+import com.example.ud3_rac.R
+import com.example.ud3_rac.ViewModel.ListaViewModel
 
-/**
- * A fragment representing a list of Items.
- */
 class listFragment : Fragment() {
-
+    val vm: ListaViewModel by viewModels()
     private var columnCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +37,7 @@ class listFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = UsuarioAdapter(PlaceholderContent.ITEMS)
+                adapter = UsuarioAdapter(vm.lista)
             }
         }
         return view
