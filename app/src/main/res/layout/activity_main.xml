@@ -12,20 +12,23 @@
         android:id="@+id/fragmentContainerView"
         android:name="com.example.ud3_rac.View.listFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="57"
         tools:layout="@layout/fragment_list" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
         android:name="com.example.ud3_rac.View.counterFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="3"
         tools:layout="@layout/fragment_counter" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView3"
         android:name="com.example.ud3_rac.View.detailFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="40"
         tools:layout="@layout/fragment_detail" />
 </LinearLayout>

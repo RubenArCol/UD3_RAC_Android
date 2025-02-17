@@ -4,7 +4,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.example.ud3_rac.Model.Usuario
+import com.example.ud3_rac.ViewModel.ListaViewModel
 
 import com.example.ud3_rac.databinding.LineausuarioBinding
 
@@ -12,7 +14,14 @@ import com.example.ud3_rac.databinding.LineausuarioBinding
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class UsuarioAdapter(private val values: List<Usuario>) : RecyclerView.Adapter<UsuarioAdapter.ViewHolder>() {
+class UsuarioAdapter(padre: Fragment, private val vm: ListaViewModel) : RecyclerView.Adapter<UsuarioAdapter.ViewHolder>() {
+    lateinit var values:List<Usuario>
+    init{
+        vm.lista.observe(padre){
+            values=it
+            notifyDataSetChanged()
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LineausuarioBinding.inflate(LayoutInflater.from(parent.context), parent, false))

@@ -37,7 +37,7 @@ class listFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = UsuarioAdapter(vm.lista)
+                adapter = UsuarioAdapter(this@listFragment, vm)
             }
         }
         return view

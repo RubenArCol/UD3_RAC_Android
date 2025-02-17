@@ -1,7 +1,6 @@
 package com.example.ud3_rac.Model
 
 import java.text.SimpleDateFormat
-import java.time.LocalTime
 import java.util.Date
 import java.util.Locale
 import kotlin.random.Random
