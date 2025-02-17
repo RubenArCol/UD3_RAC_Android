@@ -1,12 +1,15 @@
 package com.example.ud3_rac.Model
 
+import java.text.SimpleDateFormat
 import java.time.LocalTime
+import java.util.Date
+import java.util.Locale
 import kotlin.random.Random
 
 class Usuario (
     val idUsuario:Int = ++id,
     var nombre:String = nombreAleatorio(),
-    var hora:LocalTime = LocalTime.now()
+    var hora:String = devuelveHora()
 ){
     companion object{
         const val VOCALES = "aeiou"
@@ -46,7 +49,13 @@ class Usuario (
             return CONSONANTES.substring(pos, pos + 1)
         }
 
+        fun devuelveHora(): String {
+            val formato:SimpleDateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+            return formato.format(Date())
+        }
 
     }
 
 }
+
+
