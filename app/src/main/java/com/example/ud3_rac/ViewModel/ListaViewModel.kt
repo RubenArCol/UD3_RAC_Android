@@ -29,7 +29,8 @@ class ListaViewModel: ViewModel() {
     }
 
     private fun generaUsuario() {
-        _lista.value?.add(Usuario())
+        //_lista.value?.add(Usuario())
+        _lista.value = _lista.value?.toMutableList()?.apply { add(Usuario()) }
     }
 
     fun recargarLista(){
