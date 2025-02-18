@@ -34,6 +34,11 @@ class UsuarioAdapter(padre: Fragment, private val vm: ListaViewModel) : Recycler
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(val binding: LineausuarioBinding) : RecyclerView.ViewHolder(binding.root) {
+        init{
+            binding.root.setOnClickListener{
+                vm.modificaUsuario(absoluteAdapterPosition)
+            }
+        }
         fun rellena(usuario: Usuario){
             binding.idUsuario.text = usuario.idUsuario.toString()
             binding.horaUsuario.text = usuario.hora

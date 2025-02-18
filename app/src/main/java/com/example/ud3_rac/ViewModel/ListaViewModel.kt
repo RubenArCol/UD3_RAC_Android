@@ -12,6 +12,10 @@ class ListaViewModel: ViewModel() {
     val lista: LiveData<MutableList<Usuario>>
         get()= _lista
 
+    private var _usuarioSeleccionado = MutableLiveData<Usuario>()
+    val usuarioSeleccionado: LiveData<Usuario>
+        get()= _usuarioSeleccionado
+
     val timer = object : CountDownTimer(5000, 5000){
         override fun onTick(millisUntilFinished: Long) {
 
@@ -35,6 +39,10 @@ class ListaViewModel: ViewModel() {
 
     fun recargarLista(){
         _lista.value=UsuarioProvider.generaLista(10)
+    }
+
+    fun modificaUsuario(posicion: Int) {
+        _usuarioSeleccionado.value = _lista.value?.get(posicion)
     }
 
 }

@@ -5,9 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.ud3_rac.R
+import com.example.ud3_rac.ViewModel.ListaViewModel
+import com.example.ud3_rac.databinding.FragmentDetailBinding
 
 class detailFragment : Fragment() {
+    val vm: ListaViewModel by activityViewModels()
+
+    var _enlace:FragmentDetailBinding?=null
+    val enlace
+        get()=_enlace!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +28,18 @@ class detailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        _enlace = FragmentDetailBinding.inflate(inflater, container, false)
+        val vista = enlace.root
+
+        return vista
     }
 
-    companion object {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        vm.usuarioSeleccionado.observe(viewLifecycleOwner){usuarioSeleccionado ->
+            enlace.recuperaNombre.setText(usuarioSeleccionado.nombre)
+        }
     }
+
 }
