@@ -21,6 +21,10 @@ class UsuarioAdapter(padre: Fragment, private val vm: ListaViewModel) : Recycler
             values=it
             notifyDataSetChanged()
         }
+
+        vm.usuarioSeleccionado.observe(padre){
+
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,7 +40,7 @@ class UsuarioAdapter(padre: Fragment, private val vm: ListaViewModel) : Recycler
     inner class ViewHolder(val binding: LineausuarioBinding) : RecyclerView.ViewHolder(binding.root) {
         init{
             binding.root.setOnClickListener{
-                vm.modificaUsuario(absoluteAdapterPosition)
+                vm.seleccionaUsuario(absoluteAdapterPosition)
             }
         }
         fun rellena(usuario: Usuario){

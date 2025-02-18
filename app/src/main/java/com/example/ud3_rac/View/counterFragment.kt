@@ -14,7 +14,9 @@ import com.example.ud3_rac.ViewModel.ListaViewModel
 class counterFragment : Fragment() {
     val vm: ListaViewModel by activityViewModels()
     var contadorUsuario : Int = 0
+    var contadorModificado : Int = 0
     private lateinit var contadorTextView: TextView
+    private lateinit var modificadoTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,16 +30,20 @@ class counterFragment : Fragment() {
         val vista = inflater.inflate(R.layout.fragment_counter, container, false)
 
         contadorTextView = vista.findViewById(R.id.Insertado)
+        modificadoTextView = vista.findViewById(R.id.Modificado)
 
         vm.lista.observe(viewLifecycleOwner) { lista ->
             contadorUsuario = lista.size
             contadorTextView.text = contadorUsuario.toString()
         }
 
+        vm.pos_modificada.observe(viewLifecycleOwner) { posicion ->
+            if (posicion >= 0) {
+                contadorModificado++
+                modificadoTextView.text = contadorModificado.toString() // Actualizar el conteo de modificaciones
+            }
+        }
+
         return vista
-    }
-
-    companion object {
-
     }
 }

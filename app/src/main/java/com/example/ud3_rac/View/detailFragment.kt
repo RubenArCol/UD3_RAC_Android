@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.ud3_rac.R
 import com.example.ud3_rac.ViewModel.ListaViewModel
 import com.example.ud3_rac.databinding.FragmentDetailBinding
 
@@ -39,6 +38,13 @@ class detailFragment : Fragment() {
 
         vm.usuarioSeleccionado.observe(viewLifecycleOwner){usuarioSeleccionado ->
             enlace.recuperaNombre.setText(usuarioSeleccionado.nombre)
+        }
+
+        enlace.btnEdit.setOnClickListener{
+            vm.usuarioSeleccionado.value?.let { usuarioSeleccionado ->
+                val nuevoNombre: String = enlace.recuperaNombre.text.toString()
+                vm.modificaUsuario(nuevoNombre)
+            }
         }
     }
 
