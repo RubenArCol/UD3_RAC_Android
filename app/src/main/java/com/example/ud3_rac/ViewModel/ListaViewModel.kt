@@ -22,6 +22,10 @@ class ListaViewModel: ViewModel() {
     val pos_modificada: LiveData<Int>
         get() = _pos_modificada
 
+    private val _pos_eliminada = MutableLiveData<Int>(-1)
+    val pos_eliminada: LiveData<Int>
+        get() = _pos_eliminada
+
     val timer = object : CountDownTimer(5000, 5000){
         override fun onTick(millisUntilFinished: Long) {
 
@@ -62,6 +66,12 @@ class ListaViewModel: ViewModel() {
             _lista.value = nuevaLista
             _pos_modificada.value = index
         }
+    }
+
+    fun eliminarUsuario(posicion: Int) {
+        _lista.value?.removeAt(posicion)
+        _lista.value = _lista.value
+        _pos_eliminada.value = posicion
     }
 
 }

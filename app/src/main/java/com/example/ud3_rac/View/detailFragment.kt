@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.ud3_rac.ViewModel.ListaViewModel
 import com.example.ud3_rac.databinding.FragmentDetailBinding
 
 class detailFragment : Fragment() {
     val vm: ListaViewModel by activityViewModels()
+    var posicion = -1
 
     var _enlace:FragmentDetailBinding?=null
     val enlace
@@ -38,12 +41,21 @@ class detailFragment : Fragment() {
 
         vm.usuarioSeleccionado.observe(viewLifecycleOwner){usuarioSeleccionado ->
             enlace.recuperaNombre.setText(usuarioSeleccionado.nombre)
-        }
 
-        enlace.btnEdit.setOnClickListener{
-            vm.usuarioSeleccionado.value?.let { usuarioSeleccionado ->
-                val nuevoNombre: String = enlace.recuperaNombre.text.toString()
-                vm.modificaUsuario(nuevoNombre)
+            enlace.btnEdit.setOnClickListener{
+                vm.usuarioSeleccionado.value?.let { usuarioSeleccionado ->
+                    val nuevoNombre: String = enlace.recuperaNombre.text.toString()
+                    vm.modificaUsuario(nuevoNombre)
+                }
+            }
+
+            enlace.btnEliminar.setOnClickListener{
+                vm.usuarioSeleccionado.value?.let { usuarioSeleccionado ->
+                    posicion = vm.lista.value?.indexOf(usuarioSeleccionado)!!
+                    if (posicion >= 0){
+                        vm.eliminarUsuario(posicion)
+                    }
+                }
             }
         }
     }

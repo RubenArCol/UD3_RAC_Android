@@ -22,9 +22,7 @@ class UsuarioAdapter(padre: Fragment, private val vm: ListaViewModel) : Recycler
             notifyDataSetChanged()
         }
 
-        vm.usuarioSeleccionado.observe(padre){
 
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

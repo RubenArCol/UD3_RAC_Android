@@ -15,8 +15,10 @@ class counterFragment : Fragment() {
     val vm: ListaViewModel by activityViewModels()
     var contadorUsuario : Int = 0
     var contadorModificado : Int = 0
+    var contadorEliminado : Int = 0
     private lateinit var contadorTextView: TextView
     private lateinit var modificadoTextView: TextView
+    private lateinit var EliminadoTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,7 @@ class counterFragment : Fragment() {
 
         contadorTextView = vista.findViewById(R.id.Insertado)
         modificadoTextView = vista.findViewById(R.id.Modificado)
+        EliminadoTextView = vista.findViewById(R.id.Eliminado)
 
         vm.lista.observe(viewLifecycleOwner) { lista ->
             contadorUsuario = lista.size
@@ -40,7 +43,14 @@ class counterFragment : Fragment() {
         vm.pos_modificada.observe(viewLifecycleOwner) { posicion ->
             if (posicion >= 0) {
                 contadorModificado++
-                modificadoTextView.text = contadorModificado.toString() // Actualizar el conteo de modificaciones
+                modificadoTextView.text = contadorModificado.toString()
+            }
+        }
+
+        vm.pos_eliminada.observe(viewLifecycleOwner) { posicion ->
+            if (posicion >= 0) {
+                contadorEliminado++
+                EliminadoTextView.text = contadorEliminado.toString()
             }
         }
 
