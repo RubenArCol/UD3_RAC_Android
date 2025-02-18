@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.ud3_rac.R
 import com.example.ud3_rac.ViewModel.ListaViewModel
 
 class listFragment : Fragment() {
-    val vm: ListaViewModel by viewModels()
+    val vm: ListaViewModel by activityViewModels()
     private var columnCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -4,10 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.ud3_rac.R
+import com.example.ud3_rac.ViewModel.ListaViewModel
 
 class counterFragment : Fragment() {
+    val vm: ListaViewModel by activityViewModels()
+    var contadorUsuario : Int = 0
+    private lateinit var contadorTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +25,16 @@ class counterFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_counter, container, false)
+        val vista = inflater.inflate(R.layout.fragment_counter, container, false)
+
+        contadorTextView = vista.findViewById(R.id.Insertado)
+
+        vm.lista.observe(viewLifecycleOwner) { lista ->
+            contadorUsuario = lista.size
+            contadorTextView.text = contadorUsuario.toString()
+        }
+
+        return vista
     }
 
     companion object {
