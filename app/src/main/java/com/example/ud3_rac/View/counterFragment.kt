@@ -13,9 +13,7 @@ import com.example.ud3_rac.ViewModel.ListaViewModel
 
 class counterFragment : Fragment() {
     val vm: ListaViewModel by activityViewModels()
-    var contadorUsuario : Int = 0
-    var contadorModificado : Int = 0
-    var contadorEliminado : Int = 0
+
     private lateinit var contadorTextView: TextView
     private lateinit var modificadoTextView: TextView
     private lateinit var EliminadoTextView: TextView
@@ -36,21 +34,18 @@ class counterFragment : Fragment() {
         EliminadoTextView = vista.findViewById(R.id.Eliminado)
 
         vm.lista.observe(viewLifecycleOwner) { lista ->
-            contadorUsuario = lista.size
-            contadorTextView.text = contadorUsuario.toString()
+            contadorTextView.text = vm.contadorUsuario.value.toString()
         }
 
         vm.pos_modificada.observe(viewLifecycleOwner) { posicion ->
             if (posicion >= 0) {
-                contadorModificado++
-                modificadoTextView.text = contadorModificado.toString()
+                modificadoTextView.text = vm.contadorModificado.value.toString()
             }
         }
 
         vm.pos_eliminada.observe(viewLifecycleOwner) { posicion ->
             if (posicion >= 0) {
-                contadorEliminado++
-                EliminadoTextView.text = contadorEliminado.toString()
+                EliminadoTextView.text = vm.contadorEliminado.value.toString()
             }
         }
 

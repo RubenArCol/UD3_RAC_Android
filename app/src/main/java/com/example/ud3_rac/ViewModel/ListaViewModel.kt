@@ -10,9 +10,21 @@ import kotlin.math.max
 
 class ListaViewModel: ViewModel() {
 
-    private val _lista= MutableLiveData<MutableList<Usuario>>(UsuarioProvider.generaLista(10))
+    private val _lista= MutableLiveData<MutableList<Usuario>>(UsuarioProvider.generaLista(35))
     val lista: LiveData<MutableList<Usuario>>
         get()= _lista
+
+    private var _contadorUsuario = MutableLiveData<Int>(_lista.value?.size)
+        val contadorUsuario : LiveData<Int>
+            get() = _contadorUsuario
+
+    private var _contadorModificado = MutableLiveData<Int>(1)
+    val contadorModificado : LiveData<Int>
+        get() = _contadorModificado
+
+    private var _contadorEliminado = MutableLiveData<Int>(0)
+    val contadorEliminado : LiveData<Int>
+        get() = _contadorEliminado
 
     private var _usuarioSeleccionado = MutableLiveData<Usuario>()
     val usuarioSeleccionado: LiveData<Usuario>
@@ -44,6 +56,7 @@ class ListaViewModel: ViewModel() {
 
     private fun generaUsuario() {
         //_lista.value?.add(Usuario())
+        _contadorUsuario.value = _contadorUsuario.value!!+1
         _lista.value = _lista.value?.toMutableList()?.apply { add(Usuario()) }
     }
 
@@ -65,11 +78,13 @@ class ListaViewModel: ViewModel() {
             nuevaLista[index].hora = Usuario.devuelveHora()
             _lista.value = nuevaLista
             _pos_modificada.value = index
+            _contadorModificado.value = _contadorModificado.value!!+1
         }
     }
 
     fun eliminarUsuario(posicion: Int) {
         _lista.value?.removeAt(posicion)
+        _contadorEliminado.value = _contadorEliminado.value!!+1
         _lista.value = _lista.value
         _pos_eliminada.value = posicion
     }
